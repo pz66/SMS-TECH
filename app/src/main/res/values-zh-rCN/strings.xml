@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="zh">
+
+    <!-- Core -->
+    <string name="app_name">信息</string>
+
+    <!-- v1.3.7 — First-launch splash screen (animated logo + tagline). -->
+    <string name="splash_tagline">这款应用不会读取您的消息，并尊重您的隐私。</string>
+    <string name="splash_logo_content_description">SMS Tech 徽标</string>
+    <string name="splash_skip_hint">点击任意位置继续</string>
+    <string name="splash_skip_label">跳过启动页</string>
+
+    <!-- v1.3.10 — Foreground KeepAliveService (opt-in mode for aggressive OEM ROMs). -->
+    <string name="keep_alive_notification_title">SMS Tech 正在运行</string>
+    <string name="keep_alive_notification_text">可靠接收手机短信/彩信所需。</string>
+    <string name="settings_keep_alive_title">前台服务模式 (国产系统)</string>
+    <string name="settings_keep_alive_desc">通过状态栏中的永久通知使 SMS Tech 在后台保持运行（任何前台服务都必须遵守 Android 合同 — 在开关打开时无法关闭）。适用于会杀死第三方短信应用并拦截彩信/通知的激进型 ROM（小米 MIUI/HyperOS、华为 EMUI/HarmonyOS、荣耀 MagicOS、OPPO/Realme/OnePlus ColorOS、Vivo/iQOO FunTouch、魅族 Flyme、华硕 Zen UI）。在 Pixel、三星 Galaxy、索尼、Fairphone、摩托罗拉、诺基亚、Nothing Phone 上无用 — 在这些设备上请关闭。</string>
+
+
+    <!-- Common -->
+    <string name="action_send">发送</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_confirm">确认</string>
+    <string name="action_save">保存</string>
+    <string name="action_delete">删除</string>
+    <string name="action_archive">归档</string>
+    <string name="action_unarchive">取消归档</string>
+    <string name="action_pin">置顶</string>
+    <string name="action_unpin">取消置顶</string>
+    <string name="action_mute">静音</string>
+    <string name="action_unmute">取消静音</string>
+    <string name="action_block">拦截</string>
+    <string name="action_unblock">解除拦截</string>
+    <string name="action_more">更多</string>
+    <string name="action_message_actions">消息操作</string>
+    <string name="action_reply">回复</string>
+    <string name="action_translate">翻译</string>
+    <!-- v1.3.11 (F3) — `action_copy` / `action_forward` already defined below (line 91-92);
+         only the toast string is new. -->
+    <string name="toast_copied">消息已复制</string>
+    <!-- v1.3.11 (F4) — phone number actions dialog -->
+    <string name="phone_action_subtitle">选择此电话号码的操作。</string>
+    <string name="phone_action_call">呼叫</string>
+    <string name="phone_action_add_contact">添加到联系人</string>
+    <string name="phone_action_no_dialer">此设备上没有可用的电话应用。</string>
+    <string name="phone_action_no_contacts">此设备上没有可用的联系人应用。</string>
+    <!-- v1.3.11 (F5) — forward sheet -->
+    <string name="forward_sheet_title">转发至…</string>
+    <string name="forward_search_placeholder">搜索对话</string>
+    <string name="forward_new_contact">新收件人</string>
+    <string name="forward_existing_conversation">现有对话</string>
+    <string name="forward_no_conversation">没有其他对话可供转发。</string>
+    <string name="thread_reply_deleted">原始消息已删除</string>
+    <string name="action_cancel_reply">取消回复</string>
+    <!-- v1.7.1 — translation feature delegated to the system app via
+         ACTION_PROCESS_TEXT (replaces in-app ML Kit removed in v1.7.0).
+         Shown if no app on the device declares the intent. -->
+    <string name="snack_no_translate_app">未安装翻译应用</string>
+    <string name="chat_you">您</string>
+    <string name="attach_photo">照片</string>
+    <string name="attach_video">视频</string>
+    <string name="attach_file">文件</string>
+    <string name="attach_contact">联系人</string>
+    <string name="attach_sheet_title">添加到您的消息</string>
+    <string name="attach_sheet_subtitle">作为彩信发送</string>
+    <string name="voice_confirm_title">发送此语音消息？</string>
+    <string name="voice_confirm_body">录制的片段将作为彩信发送给收件人。</string>
+    <string name="settings_app_lock">应用锁</string>
+    <string name="lock_mode_off">无</string>
+    <string name="lock_mode_pin">密码</string>
+    <string name="pin_setup_title">设置 PIN</string>
+    <string name="pin_setup_field">PIN (4 到 12 位数字)</string>
+    <string name="pin_setup_confirm">确认 PIN</string>
+    <string name="pin_setup_mismatch">PIN 不匹配</string>
+    <string name="pin_setup_too_short">最少 4 位数字</string>
+    <string name="pin_setup_digits_only">仅数字</string>
+    <string name="lock_mode_dialog_title">选择锁定模式</string>
+    <string name="conversation_actions_title">对话操作</string>
+    <!-- v1.25.3 — blocking no longer deletes anything. The dialog used to promise blocking only
+         while the action ALSO wiped the conversation from Room and from the system SMS database;
+         the deletion has been removed rather than merely documented. -->
+    <string name="conversation_block_confirm_title">拦截此对话？</string>
+    <string name="conversation_block_confirm_body">此对话中的每个号码都将被拦截。对话将保留在您的列表中，标记为已拦截，并且不会删除任何内容。您可以随时解除拦截。</string>
+    <string name="conversations_section_blocked">已拦截</string>
+    <string name="conversation_blocked_label">已拦截</string>
+    <string name="settings_purge_blocked">清除已拦截的对话</string>
+    <string name="settings_purge_blocked_desc">永久删除所有参与者都在系统拦截列表中的对话。</string>
+    <string name="settings_purge_blocked_result">已清除 %1$d 条对话</string>
+    <string name="settings_purge_blocked_none">没有已拦截的对话可供清除</string>
+    <string name="lock_mode_biometric">生物识别 + PIN 回退</string>
+    <string name="lock_biometric_title">解锁 SMS Tech</string>
+    <string name="lock_biometric_subtitle">使用您的指纹或面部</string>
+    <string name="lock_use_pin">使用 PIN</string>
+    <string name="lock_biometric_unavailable">此设备上不支持生物识别 — 请先设置 PIN</string>
+    <string name="sort_section">排序对话</string>
+    <string name="sort_date">最近优先</string>
+    <string name="sort_unread">未读优先</string>
+    <string name="sort_pinned">置顶优先</string>
+    <string name="action_back">返回</string>
+    <string name="action_copy">复制</string>
+    <string name="action_forward">转发</string>
+    <string name="action_retry">重试</string>
+    <string name="action_close">关闭</string>
+    <string name="action_continue">继续</string>
+    <string name="action_export_pdf">导出为 PDF</string>
+    <string name="action_attach">附加</string>
+    <string name="action_schedule">计划</string>
+    <string name="action_new_message">新消息</string>
+    <string name="action_call">呼叫</string>
+    <string name="conversations_search_hint">搜索号码、联系人、消息…</string>
+    <string name="conversations_no_match">没有匹配的对话。</string>
+    <string name="thread_create_contact">创建联系人</string>
+    <string name="thread_update_contact">更新联系人</string>
+    <string name="action_create_contact">创建联系人</string>
+    <string name="action_details">对话详情</string>
+
+    <string name="thread_details_messages">%1$d 条消息</string>
+    <string name="thread_details_first">第一条消息：%1$s</string>
+    <string name="thread_details_last">最后一条消息：%1$s</string>
+    <string name="thread_details_participants">参与者：%1$d</string>
+    <string name="thread_details_number">号码：%1$s</string>
+
+    <!-- Tabs / sections -->
+    <string name="tab_archived">已归档</string>
+    <string name="tab_vault">保险箱</string>
+
+
+    <!-- Conversations list -->
+    <string name="conversations_empty_title">还没有对话</string>
+    <string name="conversations_empty_body">收到或发送消息后，它将在此处显示。</string>
+    <string name="conversations_archived_empty">没有已归档的对话。</string>
+    <string name="conversations_importing_title">正在导入您的消息</string>
+    <string name="conversations_importing_body">正在读取您现有的短信 — 这只会发生一次。</string>
+    <string name="conversations_importing_count">已导入 %1$d 条消息…</string>
+    <string name="conversations_delete_confirm_title">删除此对话？</string>
+    <string name="conversations_delete_confirm_body">此对话中的所有消息将从本设备永久删除。其他对话不受影响。</string>
+    <string name="conversations_draft_prefix">草稿：%1$s</string>
+    <string name="conversations_preview_attachment">附件</string>
+
+    <!-- Thread -->
+    <string name="thread_compose_placeholder">输入消息…</string>
+    <string name="thread_segments_indicator">%1$d / %2$d • %3$d 秒</string>
+    <string name="thread_status_pending">正在发送…</string>
+    <string name="thread_status_sent">已发送</string>
+    <string name="thread_status_delivered">已送达</string>
+    <string name="thread_status_failed">失败 — 点击重试</string>
+    <string name="date_today">今天</string>
+    <string name="date_yesterday">昨天</string>
+    <string name="thread_confirm_delete_message">删除此消息？此操作无法撤销。</string>
+    <string name="thread_export_success">PDF 已保存 (%1$d 页)</string>
+
+    <!-- Voice MMS composer -->
+    <string name="voice_action_record">录制语音消息</string>
+    <string name="voice_action_stop">停止录制</string>
+    <string name="voice_action_cancel">取消录制</string>
+    <string name="voice_action_discard">丢弃录音</string>
+    <string name="voice_action_send">发送语音消息</string>
+    <string name="voice_action_play">播放</string>
+    <string name="voice_action_pause">暂停</string>
+    <string name="voice_permission_denied">麦克风权限被拒绝。请打开设置以启用它。</string>
+
+    <!-- Compose -->
+    <string name="compose_to_label">收件人：</string>
+    <string name="compose_search_contact">搜索联系人或电话号码</string>
+    <string name="compose_use_this_number">使用此号码</string>
+    <string name="compose_add_to_group">添加到群组</string>
+
+    <!-- Blocked numbers -->
+    <string name="blocked_title">已拦截的号码</string>
+    <string name="blocked_empty">没有已拦截的号码。</string>
+    <string name="blocked_add">添加号码</string>
+
+    <!-- Vault -->
+    <string name="vault_title">安全保险箱</string>
+    <string name="vault_empty">保险箱是空的。</string>
+    <string name="vault_move_in">移至保险箱</string>
+    <string name="vault_move_out">移出保险箱</string>
+    <!-- v1.11.0 — feedback snackbar (Vault polish) -->
+    <string name="vault_move_in_done">对话已移至保险箱</string>
+    <string name="vault_move_in_failed">无法移动此对话</string>
+    <string name="vault_move_out_done">对话已移出保险箱</string>
+    <string name="vault_move_out_failed">无法移动此对话</string>
+    <!-- v1.13.0 — multi-selection bulk move to/from vault -->
+    <string name="bulk_vault_move_in">移至保险箱</string>
+    <string name="bulk_vault_move_out">移出保险箱</string>
+    <string name="selected">已选择</string>
+    <!-- v1.13.1 — entry from long-press ActionsSheet into multi-selection mode -->
+    <string name="bulk_select_multiple">选择多个</string>
+    <!-- v1.14.0 — emergency call behavior + outcomes -->
+    <string name="emergency_call_permission_denied">通话权限被拒绝。正在回退到拨号器。</string>
+    <string name="emergency_call_os_error">无法拨打电话。</string>
+    <!-- v1.14.0 — kill-switch "Je vais bien" (false-alarm reset) -->
+    <string name="emergency_i_am_ok_body">误报。我没事。请不要担心，无需采取任何行动。</string>
+    <string name="emergency_i_am_ok_chip_title">紧急情况最近触发</string>
+    <string name="emergency_i_am_ok_chip_action">我没事</string>
+    <string name="emergency_i_am_ok_confirm_title">发送“我没事”消息？</string>
+    <string name="emergency_i_am_ok_confirm_body">这将重置紧急冷却时间，并（可选）向您的安全联系人发送一条短信，让他们知道这是误报。您可以在设置中禁用短信。</string>
+    <string name="emergency_i_am_ok_done">已发送“我没事”消息。</string>
+    <string name="emergency_i_am_ok_reset_only">已重置冷却时间。未发送短信。</string>
+    <string name="emergency_i_am_ok_send_failed">已重置冷却时间，但没有联系人收到短信。请重试或手动联系他们。</string>
+    <string name="settings_send_i_am_ok_sms_title">重置时发送“我没事”短信</string>
+    <string name="settings_send_i_am_ok_sms_desc">当您在误报触发后点击“我没事”时，还会向您的安全联系人发送一条短信，告知他们这是误报。</string>
+    <!-- v1.14.5 — strings emergency_dry_run_* removed (button "Test without sending" deleted). -->
+    <!-- v1.14.5 — Settings → Mode urgence : ToggleRow direct accès GPS opt-in -->
+    <string name="settings_emergency_include_location_title">在紧急短信中包含 GPS</string>
+    <string name="settings_emergency_include_location_desc">将包含您当前位置的 Google 地图链接添加到紧急短信正文中。需要位置权限。如果拒绝，短信将不带坐标发送。</string>
+    <string name="settings_emergency_include_location_denied">位置权限被拒绝。已禁用 GPS 包含。</string>
+    <!-- v1.14.7 — string emergency_topbar_warning_cd retirée (orpheline, prévue pour un indicateur visuel jamais branché). -->
+    <!-- v1.14.1 — full-page emergency redesign : 4 colored call tiles + disable + open-from-notif -->
+    <string name="emergency_call_112_label">SOS 欧洲</string>
+    <string name="emergency_call_15_label">SAMU（医疗）</string>
+    <string name="emergency_call_17_label">警察</string>
+    <string name="emergency_call_18_label">消防员</string>
+    <string name="emergency_section_call_title">直接呼叫</string>
+    <string name="emergency_section_sms_title">发送 SOS 短信</string>
+    <string name="emergency_section_other_title">其他操作</string>
+    <string name="emergency_disable_button">禁用紧急模式</string>
+    <string name="emergency_disable_confirm_title">禁用紧急模式？</string>
+    <string name="emergency_disable_confirm_body">巨大的“紧急”按钮和锁屏快捷方式将停止工作，直到您在设置中重新激活它们。您以后随时可以返回此页面。</string>
+    <string name="emergency_disable_done">紧急模式已禁用。</string>
+    <string name="emergency_call_close_label">呼叫亲属</string>
+    <string name="emergency_call_close_picker_title">您想呼叫哪位亲属？</string>
+    <!-- v1.13.0 — distinct vault PIN/pass (second-factor) -->
+    <string name="pin_entry_label">PIN 或密码</string>
+    <string name="pin_error_invalid">PIN 或密码不正确</string>
+    <string name="vault_pin_dialog_title">保险箱二次验证</string>
+    <string name="vault_pin_dialog_subtitle">输入保护保险箱的 PIN 或密码。如果可用，您也可以使用生物识别。</string>
+    <string name="vault_pin_dialog_unlock">解锁</string>
+    <string name="vault_use_biometric">使用生物识别</string>
+    <string name="settings_vault_pin_title">保险箱的独立 PIN 或密码</string>
+    <string name="settings_vault_pin_desc">开启后，即使应用已解锁，打开保险箱也会要求输入专用 PIN/密码（以及可选的生物识别）。凭据会单独哈希处理，与应用 PIN 分开。</string>
+    <string name="settings_vault_pin_set_title">设置保险箱 PIN</string>
+    <string name="settings_vault_pin_set_subtitle">选择一个与您的应用 PIN 不同的 PIN。</string>
+    <string name="settings_vault_pin_confirm_title">确认保险箱 PIN</string>
+    <string name="settings_vault_pin_change">更改保险箱 PIN</string>
+    <string name="settings_vault_pin_mismatch">PIN 不匹配。请重试。</string>
+    <string name="settings_vault_pin_too_short">PIN 必须至少包含 4 个字符。</string>
+    <string name="settings_vault_pin_same_as_app">选择一个与您的应用 PIN 不同的 PIN。</string>
+    <string name="settings_vault_pin_saved">保险箱 PIN 已保存。</string>
+    <string name="settings_vault_pin_cleared">保险箱 PIN 已移除。</string>
+    <!-- v1.25.3 (audit M24) — the confirm dialog reused the feature description as its body. -->
+    <!-- v1.27.10 (external review !38458) — removing the vault PIN now requires the vault PIN. -->
+    <string name="settings_vault_pin_clear_confirm_title">移除保险箱 PIN？</string>
+    <string name="settings_vault_pin_clear_confirm_body">输入保险箱 PIN 以移除它。然后，一旦应用本身解锁，保险箱就会打开。其对话将被保留，并保持对主列表的隐藏。</string>
+    <!-- v1.27.10 — vault PIN replacement now asks for the one in place. -->
+    <string name="settings_vault_pin_current_label">当前保险箱 PIN</string>
+    <string name="settings_vault_pin_new_label">新 PIN 或密码</string>
+    <!-- v1.27.10 — the way out when the vault PIN is lost. It destroys, on purpose: a way out
+         that asked for nothing more than the app PIN would be the very bypass we closed. -->
+    <string name="settings_vault_pin_forgot_title">忘记保险箱 PIN？</string>
+    <string name="settings_vault_pin_forgot_desc">清空保险箱并移除其 PIN。在没有 PIN 的情况下唯一能再次进入的方式——它会销毁它打开的内容。</string>
+    <string name="settings_vault_pin_forgot_confirm_title">清空保险箱并移除其 PIN？</string>
+    <string name="settings_vault_pin_forgot_confirm_body">保险箱中的所有对话都会被删除，包括消息，在此手机上以及从系统短信存储中删除。无法恢复——这是在没有 PIN 的情况下重新进入的代价。保险箱外的对话不受影响。此操作无法撤销。</string>
+    <string name="settings_vault_pin_forgot_confirm_action">清空并移除</string>
+    <string name="settings_vault_pin_forgot_done">保险箱已清空：已删除 %1$d 条对话。其 PIN 已移除。</string>
+    <string name="settings_vault_pin_forgot_incomplete">清除不完整：已删除 %1$d 条对话，剩余 %2$d 条。保险箱 PIN 未移除。将短信助手设为默认短信应用，然后重试。</string>
+    <string name="settings_vault_pin_forgot_residue">保险箱已清空并移除了 PIN。但 %2$d 条对话在手机短信存储中留下了副本：它们仍然可以被其他消息应用读取。 %1$d 条对话已完全删除。</string>
+    <string name="settings_vault_pin_force_title">仍要清空？</string>
+    <string name="settings_vault_pin_force_body">无法从手机短信存储中移除 %1$d 条对话的副本，再次尝试也会得到相同的结果。短信助手可以无论如何清空保险箱并移除 PIN：您将重新获得访问权限，但这些副本仍保留在手机上，并且可以被其他消息应用读取。此操作无法撤销。</string>
+    <string name="settings_vault_pin_force_action">清空并移除 PIN</string>
+    <!-- v1.25.3 (audit M23) — turning the app lock off used to happen on a single tap. -->
+    <string name="settings_lock_clear_confirm_title">关闭应用锁？</string>
+    <string name="settings_lock_clear_confirm_body">您的 PIN 将被删除，短信助手将无需任何验证即可打开。生物识别解锁也将关闭。此操作无法撤销。</string>
+    <string name="settings_lock_clear_confirm_action">关闭</string>
+    <string name="action_disable">禁用</string>
+    <string name="vault_actions_title">保险箱操作</string>
+    <string name="vault_biometric_title">解锁保险箱</string>
+    <string name="vault_biometric_unavailable_title">保险箱不可用</string>
+    <string name="vault_biometric_unavailable_body">生物识别是此保险库唯一设置的第二重身份验证因素，目前不可用。请在“设置”中设置单独的保险库代码，以便在不使用生物识别的情况下打开保险库。</string>
+    <string name="vault_biometric_subtitle">请验证您的身份以打开私密文件夹。</string>
+    <string name="vault_biometric_pending">等待指纹...</string>
+    <!-- v1.11.0 — Sujet 5 apparence par contact -->
+    <string name="thread_overflow_appearance">外观...</string>
+    <string name="appearance_dialog_title">对话外观</string>
+    <string name="appearance_section_bubble_color">发件气泡颜色</string>
+    <string name="appearance_section_avatar">联系人头像</string>
+    <string name="appearance_pick_avatar">从图库选择</string>
+    <string name="appearance_reset_avatar">使用默认头像</string>
+    <string name="appearance_saved">外观已更新</string>
+    <!-- v1.11.0 — Sujet 3 anti-smishing -->
+    <string name="settings_smishing_detection">诈骗检测（离线）</string>
+    <string name="settings_smishing_detection_desc">标记可疑的入站短信（缩短的网址、紧急措辞、高费率号码、仿冒域名）。100% 本地，无云端。可能产生误报。</string>
+    <string name="smishing_banner_title">⚠️ 可能是欺诈</string>
+    <string name="smishing_banner_subtitle">点按查看原因</string>
+    <string name="smishing_dialog_title">为何发出此警告？</string>
+    <string name="smishing_dialog_intro">短信技术检测到此消息中存在以下可疑信号。没有将任何短信内容发送到任何地方——所有计算均在本地进行。</string>
+    <string name="smishing_reason_url_shortener">缩短的网址（bit.ly、t.co、tinyurl…）。短链接可以隐藏真实目的地——点击前请验证。</string>
+    <string name="smishing_reason_urgency">紧急或施压措辞（紧急、即将到期、点击此处…）。一种常见的社交工程策略，旨在引发恐慌。</string>
+    <string name="smishing_reason_premium">高费率电话号码（3xxx、0899xxx、081x…）。拨打这些号码费用昂贵，且常为诈骗的一部分。</string>
+    <string name="smishing_reason_typosquatting">仿冒域名（例如，“1mpots.gouv.fr”而非“impots.gouv.fr”）。请始终手动输入官方地址。</string>
+    <string name="smishing_dialog_dismiss">好的</string>
+    <!-- v1.11.0 — Noms de couleurs de la palette d'apparence (a11y TalkBack) -->
+    <string name="appearance_color_brand_blue">品牌蓝（默认）</string>
+    <string name="appearance_color_navy">海军蓝</string>
+    <string name="appearance_color_sky_blue">天蓝</string>
+    <string name="appearance_color_deep_indigo">深靛蓝</string>
+    <!-- v1.19.0 — mauve (ProtonMail-like) + raspberry added; greens/brown/dupes removed -->
+    <string name="appearance_color_mauve">淡紫色</string>
+    <string name="appearance_color_deep_purple">深紫罗兰色</string>
+    <string name="appearance_color_framboise">树莓红</string>
+    <string name="appearance_color_brand_red">品牌红</string>
+    <string name="appearance_color_burnt_orange">赭石橙</string>
+    <string name="appearance_color_slate_blue_grey">蓝灰色</string>
+    <string name="appearance_color_selected">已选</string>
+    <!-- v1.12.0 — vault move with locked session -->
+    <string name="error_session_locked">解锁应用以移动此对话</string>
+    <!-- v1.12.0 — Emergency shortcut (lock-screen persistent notification) -->
+    <string name="channel_emergency_shortcut_label">紧急快捷方式</string>
+    <!-- v1.14.8 audit P2 — texte mis à jour : depuis v1.14.2 l'action "URGENCE" en un tap a été retirée (risque de déclenchement accidentel). Seules les actions 112/17 restent. -->
+    <string name="channel_emergency_shortcut_desc">带有快速拨号操作（112/17）的静默持久通知。点按通知主体可打开紧急屏幕，然后按住 3 秒可发送警报。</string>
+    <string name="emergency_shortcut_notif_title">短信技术 — 紧急快捷方式</string>
+    <string name="emergency_shortcut_notif_text">点按以打开紧急页面，或拨打 112。</string>
+    <string name="emergency_shortcut_action_112">拨打 112</string>
+    <string name="settings_emergency_shortcut_title">锁屏快捷方式</string>
+    <string name="emergency_saved_enabled">紧急模式已启用</string>
+    <string name="emergency_saved_disabled">紧急模式已禁用</string>
+    <string name="emergency_setup_unsaved_body">紧急模式尚未保存。现在离开将保持其先前状态。</string>
+    <!-- v1.14.8 audit P2 — texte mis à jour pour refléter v1.14.2 (action URGENCE retirée de la notif). -->
+    <string name="settings_emergency_shortcut_desc">显示一个带有快速拨号操作（112/17）的持久通知，无需解锁即可访问。点按通知主体可打开紧急屏幕。默认关闭。</string>
+    <string name="emergency_shortcut_no_app_to_dial">没有安装拨打 112 的应用</string>
+    <string name="emergency_shortcut_action_police">拨打 17</string>
+    <string name="settings_emergency_call_police_title">锁屏通知中的“拨打 17”快速操作</string>
+    <string name="settings_emergency_call_police_desc">向持久的紧急锁屏通知添加“拨打 17”快速操作。无论此设置如何，17 按钮始终在应用内紧急页面可见。默认关闭。</string>
+
+    <!-- Backup / restore dialogs -->
+    <string name="backup_explainer">加密备份使用 AES-256-GCM 和 PBKDF2-HMAC-SHA512 密钥派生。请选择一个强密码——没有密码则无法恢复文件。</string>
+    <string name="backup_passphrase_title">备份密码</string>
+    <string name="backup_passphrase_explain">选择一个密码来加密备份。至少 8 个字符。请妥善保管——无法恢复。</string>
+    <string name="backup_passphrase">密码</string>
+    <string name="backup_passphrase_repeat">重复密码</string>
+    <string name="backup_passphrase_mismatch">密码不匹配。</string>
+    <string name="backup_export_success">备份已保存。</string>
+    <string name="backup_export_failed">备份失败。</string>
+    <string name="backup_export_vault_locked">保险库已锁定 — 请先打开保险库，以便备份包含它。</string>
+    <string name="backup_vault_pin_title">需要保险库 PIN</string>
+    <string name="backup_vault_pin_body">备份包含您的保险库，因此在创建备份之前会要求输入保险库 PIN。</string>
+    <string name="backup_vault_biometric_title">备份需要保险库 PIN</string>
+    <string name="backup_vault_biometric_body">您的保险库仅受生物识别保护，此屏幕无法请求生物识别。请在“设置”-&gt;“安全”中设置保险库 PIN，然后备份将在此处要求输入。</string>
+
+    <!-- Migration -->
+    <string name="migration_title">导入现有短信</string>
+    <string name="migration_body">从系统短信提供商读取，并将消息镜像到加密数据库中。短信技术必须已是默认短信应用。</string>
+    <string name="migration_run">开始导入</string>
+    <string name="migration_rerun">重新运行</string>
+    <string name="migration_imported">已导入：%1$d</string>
+    <!-- v1.25.3 (audit M10) — an import failure used to leave a progress bar spinning forever. -->
+    <string name="migration_failed">导入因错误而停止。已导入的消息已保留——您可以再次运行。</string>
+
+    <!-- About -->
+    <string name="about_easter_egg">✨ 感谢那些关心自己隐私的人。✨</string>
+
+    <!-- Lock screen -->
+    <string name="lock_title">短信技术已锁定</string>
+    <string name="lock_pin_hint">请输入您的 PIN</string>
+    <string name="lock_lockout_message">尝试次数过多。请在 %1$d 秒后重试。</string>
+
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="settings_search">搜索设置...</string>
+
+    <string name="settings_section_appearance">外观</string>
+    <string name="settings_theme_system">系统</string>
+    <string name="settings_theme_light">浅色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_theme_dark_tech">暗黑科技</string>
+    <string name="settings_theme_dark_tech_desc">开发者友好的暗色调。覆盖动态颜色和 AMOLED。</string>
+    <string name="settings_dynamic_colors">动态颜色（Android 12+）</string>
+    <string name="settings_amoled">AMOLED 真黑</string>
+
+    <string name="settings_section_locale">语言和地区</string>
+    <string name="settings_language">应用语言</string>
+
+    <string name="settings_section_conversations">对话</string>
+    <string name="settings_show_avatars">显示头像</string>
+    <string name="settings_signature">自动签名</string>
+
+    <string name="settings_section_sending">发送</string>
+    <string name="settings_default_region_title">默认国家</string>
+    <string name="settings_default_region_auto">自动（SIM 卡国家）</string>
+    <string name="settings_default_region_auto_hint">在发送前使用 SIM 卡的国家/地区代码将国内号码（06…）转换为国际格式。如果您的联系人以其他国家/地区的国内格式保存，请选择一个国家/地区——例如，否则使用外国 SIM 卡的法国 06… 号码将无法送达。</string>
+    <string name="settings_confirm_broadcast">发送前确认</string>
+    <string name="settings_confirm_send_title">发送此消息？</string>
+    <string name="settings_delivery_reports">送达报告</string>
+    <string name="settings_retry_failed">自动重试失败的消息</string>
+    <string name="settings_my_number">我的手机号码</string>
+    <string name="settings_my_number_dialog_title">你的手机号码</string>
+    <string name="settings_my_number_dialog_body">可选。如果设置，此号码将替换发件人地址中的 AOSP 占位符“insert-address-token”，以便其他短信应用正确显示你。</string>
+    <string name="settings_my_number_placeholder">+44 7XXX XXX XXX</string>
+    <string name="settings_my_number_detect">从 SIM 卡自动检测</string>
+    <string name="settings_my_number_not_set">未设置</string>
+    <string name="settings_my_number_detect_failed">无法读取 SIM 卡号码 — 请手动输入</string>
+    <string name="settings_my_number_detect_no_perm">未授予电话号码权限 — 请手动输入</string>
+    <string name="settings_my_number_invalid">必须是有效的电话号码（+ 和数字）</string>
+
+    <string name="settings_auto_delete_title">历史记录清理</string>
+    <string name="settings_auto_delete_desc">删除比选定年龄更早的短信、彩信和语音消息。自动清理最多每月运行一次；你也可以随时触发手动清理。已加星标的消息永远不会被删除。</string>
+    <string name="settings_auto_delete_explainer">每月自动运行一次。已加星标的消息永远不会被删除。</string>
+    <string name="settings_auto_delete_off">关闭 — 不删除任何内容</string>
+    <string name="settings_auto_delete_30">删除 30 天前的消息</string>
+    <string name="settings_auto_delete_60">删除 60 天前的消息</string>
+    <string name="settings_auto_delete_180">删除 180 天前的消息</string>
+    <string name="settings_auto_delete_status_off">关闭</string>
+    <string name="settings_auto_delete_status_30">删除 30 天前的消息</string>
+    <string name="settings_auto_delete_status_60">删除 60 天前的消息</string>
+    <string name="settings_auto_delete_status_180">删除 180 天前的消息</string>
+    <string name="settings_auto_delete_status_n_days">删除 %1$d 天前的消息</string>
+    <string name="settings_auto_delete_purge_now">立即清理</string>
+    <string name="settings_auto_delete_purge_now_disabled">选择一个时长以启用</string>
+    <string name="settings_auto_delete_purge_confirm_title">确认清理</string>
+    <string name="settings_auto_delete_purge_confirm_zero">此时长没有要删除的消息。</string>
+    <string name="settings_auto_delete_purge_confirm_body">将从手机中删除 %1$d 条 %2$d 天前的消息，而不仅仅是从短信助手。已加星标的消息将保留。此操作无法撤销。</string>
+    <string name="settings_auto_delete_purge_done">已删除 %1$d 条消息。</string>
+    <string name="action_delete_now">删除</string>
+    <string name="settings_resync_title">从手机重新同步</string>
+    <string name="settings_resync_desc">重新导入 Android 系统中的所有短信。当手机上存在但应用中缺失消息时很有用。它不会恢复你已删除的内容：删除也会移除手机上的副本。无重复。</string>
+    <string name="settings_resync_started">后台已开始重新同步。</string>
+    <string name="settings_send_reactions_title">将我的反应发送给收件人</string>
+    <string name="settings_send_reactions_desc">当你发布表情符号反应（心形、竖起大拇指……）时，会向收件人发送一条仅包含表情符号的短信。按你的套餐费率计为一条普通短信。删除或更改反应不会重新发送任何内容。</string>
+    <!-- v1.8.0 — bug 5 fix : 3 options at a glance.
+         Title kept (was already pointing to "reaction format"). Desc legacy kept for downgrade. -->
+    <string name="settings_reaction_format_title">反应格式</string>
+    <string name="settings_reaction_format_fr">可读的法语</string>
+    <string name="settings_reaction_format_fr_hint">“我给‘预览’❤️ 进行了反应”。对于任何说法语的 Android 收件人来说，自然且易于理解。短信助手将其解码为本地反应徽章。</string>
+    <string name="settings_reaction_format_en">Tapback（iMessage 兼容）</string>
+    <string name="settings_reaction_format_en_hint">“给‘预览’❤️ 进行了反应”。iMessage（iPhone）和较新的 Google Messages 会自动将其检测为本地反应气泡。对法语收件人来说不太自然。</string>
+    <string name="settings_reaction_format_emoji">仅表情符号</string>
+    <string name="settings_reaction_format_emoji_hint">单独的“❤️”。在旧的短信应用中更简洁，但收件人会丢失所有上下文 — 他们无法分辨你对哪条消息做出了反应。</string>
+    <!-- v1.9.0 — compact emoji + quote -->
+    <string name="settings_reaction_format_emoji_quote">表情符号 + 引文（默认）</string>
+    <string name="settings_reaction_format_emoji_quote_hint">“❤️ ‘你的消息’”。紧凑且保留上下文。收件人会看到表情符号，后跟引用的原始消息。</string>
+    <!-- v1.8.1 — sender display name -->
+    <string name="settings_sender_name_title">你的显示名称</string>
+    <string name="settings_sender_name_desc">包含在发出的反应短信中，以帮助收件人识别发件人。留空以使用你的 Android 个人资料名称（或回退到匿名的“进行了反应 ❤️…”）。</string>
+    <string name="settings_sender_name_label">显示名称（最多 40 个字符）</string>
+    <string name="settings_sender_name_auto">从 Android 个人资料自动检测</string>
+
+    <!-- v1.9.0 — Safety call -->
+    <string name="settings_section_safety_call">安全呼叫</string>
+    <string name="settings_safety_call_title">安全呼叫</string>
+    <string name="settings_safety_call_desc">如果在配置的时间段内未打开短信助手，则向你的紧急联系人发送自动短信。专为独自旅行、孤居、高风险职业设计。</string>
+    <string name="settings_safety_call_disabled">已禁用</string>
+    <string name="settings_safety_call_disabled_after_alert">已禁用 — 已触发警报</string>
+    <string name="settings_safety_call_im_ok_snack">计时器已重置。</string>
+    <!-- v1.9.0 — armed recap card (visible only when Safety call is enabled) -->
+    <string name="settings_safety_call_armed_chip">已启用</string>
+    <string name="settings_safety_call_armed_started">计时器已启动：%1$s 于 %2$s</string>
+    <string name="settings_safety_call_im_ok_stops_relances">安全呼叫已关闭。将不再发送任何消息。</string>
+    <plurals name="settings_safety_call_triggered_state">
+        <item quantity="one">已发送警报 — %1$d 条消息，共 %2$d 条</item>
+        <item quantity="other">已发送警报 — %1$d 条消息，共 %2$d 条</item>
+    </plurals>
+    <string name="settings_safety_call_triggered_hint">后续消息每 15 分钟发送一次。点击“我没事”即可停止发送。</string>
+    <string name="settings_safety_call_triggered_state_sending">正在发送警报…</string>
+    <string name="settings_safety_call_triggered_hint_done">序列完成：安全呼叫已自行关闭。重新启用以再次获得保护。</string>
+    <string name="settings_safety_call_armed_duration">时长：%1$s</string>
+    <string name="settings_safety_call_armed_remaining">剩余时间：%1$s 触发</string>
+    <string name="settings_safety_call_armed_remaining_imminent">触发前少于 2 小时</string>
+    <string name="settings_safety_call_armed_contacts_one">联系人: %1$s</string>
+    <string name="settings_safety_call_armed_contacts_many">联系人: %1$s (+%2$d 位其他联系人)</string>
+    <string name="settings_safety_call_armed_template">模板: %1$s</string>
+    <string name="settings_safety_call_armed_modify">修改</string>
+    <string name="settings_safety_call_armed_actions_hint">“我没事”重置计时器：倒计时从设定的总时长重新开始，并且不发送消息。“修改”打开设置（时长、联系人、消息）。</string>
+    <string name="settings_safety_call_armed_im_ok_short">我没事</string>
+    <string name="safety_call_setup_title">安全呼叫</string>
+    <string name="safety_call_setup_section_status">状态</string>
+    <string name="safety_call_setup_section_duration">时长</string>
+    <string name="safety_call_setup_section_contacts">紧急联系人（最多 4 位）</string>
+    <string name="safety_call_setup_section_template">消息</string>
+    <string name="safety_call_setup_toggle_enable">启用安全呼叫</string>
+    <string name="safety_call_setup_toggle_desc">启用后，打开短信助手会重置计时器。如果您未在设定的时间内打开，您的联系人将收到自动短信。</string>
+    <string name="safety_call_setup_duration_24h">24 小时</string>
+    <string name="safety_call_setup_duration_48h">48 小时</string>
+    <string name="safety_call_setup_duration_72h">72 小时</string>
+    <string name="safety_call_setup_duration_custom">自定义</string>
+    <string name="safety_call_setup_duration_custom_format">%1$d 小时</string>
+    <string name="safety_call_setup_duration_custom_hint">以小时为单位 · 168 小时 = 1 周 · 最多 720 小时（30 天）</string>
+    <string name="safety_call_setup_add_contact">添加联系人</string>
+    <string name="safety_call_setup_contact_name_label">姓名（可选）</string>
+    <string name="safety_call_setup_contact_phone_label">电话号码</string>
+    <string name="safety_call_setup_contact_invalid">无效电话号码。</string>
+    <string name="safety_call_setup_contact_max_reached">最多 4 位联系人。</string>
+    <string name="safety_call_setup_remove_contact">移除</string>
+    <string name="safety_call_setup_template_check_in">签到（默认）</string>
+    <string name="safety_call_setup_template_urgent">紧急</string>
+    <string name="safety_call_setup_template_follow_up">后续</string>
+    <string name="safety_call_setup_template_custom">自定义</string>
+    <string name="safety_call_setup_template_custom_label">您的消息（最多 140 个字符）</string>
+    <string name="safety_call_setup_template_preview">预览</string>
+    <string name="safety_call_setup_save">保存</string>
+    <string name="safety_call_setup_save_validation_no_contacts">请先添加至少一位联系人再启用。</string>
+    <string name="safety_call_setup_shared_with_emergency">这些联系人也用于紧急模式，该模式仍处于激活状态。清空列表将导致无人可通知。请先关闭紧急模式，或保留至少一位联系人。</string>
+    <string name="safety_call_setup_save_validation_custom_empty">自定义消息不能为空。</string>
+    <string name="safety_call_warning_title">短信助手 — 确认您没事</string>
+    <string name="safety_call_warning_body_hours">安全呼叫将在约 %1$d 小时后触发。点击可重置计时器。</string>
+    <string name="safety_call_warning_body_imminent">安全呼叫将在 2 小时内触发。点击立即重置。</string>
+    <string name="safety_call_sequence_title">短信助手 — 警报已发送</string>
+    <plurals name="safety_call_sequence_body">
+        <item quantity="one">已向您的联系人发送 %1$d 条中的 %2$d 条消息。点击表示您没事：后续消息将停止发送。</item>
+        <item quantity="other">已向您的联系人发送 %1$d 条中的 %2$d 条消息。点击表示您没事：后续消息将停止发送。</item>
+    </plurals>
+    <string name="safety_call_sequence_title_sending">短信助手 — 正在发送警报</string>
+    <string name="safety_call_sequence_body_sending">警报正在发送给您的联系人。点击表示您没事：发送将停止。</string>
+    <string name="safety_call_sequence_title_done">短信助手 — 警报已发送，安全呼叫已关闭</string>
+    <plurals name="safety_call_sequence_body_done">
+        <item quantity="one">已向您的联系人发送 %1$d 条中的 %2$d 条消息。安全呼叫现已关闭 — 点击“重新启用”可再次激活。</item>
+        <item quantity="other">所有 %1$d 条消息均已发送给您的联系人。安全呼叫现已关闭 — 点击“重新启用”可再次激活。</item>
+    </plurals>
+    <string name="safety_call_notif_action_rearm">重新启用</string>
+    <!-- v1.27.4 — confirmation shown after the “Turn back on” action of the receipt notification.
+         The two other confirmations reuse the Settings wording (settings_safety_call_im_ok_snack /
+         settings_safety_call_im_ok_stops_relances) on purpose: the same gesture must read the same
+         way wherever it is made. -->
+    <string name="safety_call_ack_rearmed">安全呼叫已重新启用。计时器已重新开始。</string>
+    <string name="safety_call_reset_warning_title">打开短信助手时计时器会重置</string>
+    <string name="safety_call_reset_warning_body">一旦安全呼叫开启，您打开此应用并解锁后计时器就会立即重置。使用手机进行其他操作不会产生影响：如果您未在设定的延迟时间内打开短信助手，警报将发送给您的联系人。</string>
+    <string name="safety_call_history_title">触发历史</string>
+    <string name="safety_call_history_empty">无触发记录。</string>
+    <plurals name="safety_call_history_count">
+        <item quantity="one">已发送 %1$d 条中的 %2$d 条消息</item>
+        <item quantity="other">已发送 %1$d 条中的 %2$d 条消息</item>
+    </plurals>
+    <string name="safety_call_history_recipients">发送至: %1$s</string>
+    <string name="safety_call_history_stopped">序列已停止 — 您已确认您没事。</string>
+    <!-- v1.10.0 — Emergency mode (active, user-triggered hold-3s SMS to safety contacts) -->
+    <string name="settings_section_emergency">紧急模式</string>
+    <string name="settings_emergency_title">紧急模式</string>
+    <string name="settings_emergency_desc">长按 3 秒按钮会向您的紧急联系人发送一条包含您当前位置的短信。与安全呼叫（在无活动时自动触发）不同。默认禁用。</string>
+    <string name="settings_emergency_disabled">禁用</string>
+    <!-- v1.10.0+ — Emergency armed recap (mirrors safety_call_armed_*) -->
+    <string name="settings_emergency_armed_chip">启用</string>
+    <string name="settings_emergency_armed_template">模板: %1$s</string>
+    <string name="settings_emergency_armed_location">包含 GPS 位置</string>
+    <string name="settings_emergency_armed_no_location">无 GPS 位置</string>
+    <string name="settings_emergency_armed_contacts_one">联系人: %1$s</string>
+    <string name="settings_emergency_armed_contacts_many">联系人: %1$s +%2$d 位更多</string>
+    <string name="settings_emergency_armed_no_contacts">未配置联系人</string>
+    <string name="settings_emergency_armed_modify">编辑</string>
+    <string name="settings_emergency_armed_open">打开</string>
+    <string name="emergency_title">紧急模式</string>
+    <string name="emergency_setup_title">紧急模式设置</string>
+    <string name="emergency_button_label">紧急</string>
+    <string name="emergency_button_hint_hold_3s">紧急 — 长按 3 秒发送</string>
+    <string name="emergency_preview_title">将要发送的消息</string>
+    <string name="emergency_status_disabled">紧急模式已禁用。请在设置中启用。</string>
+    <string name="emergency_status_no_contacts">未配置紧急联系人。请在安全呼叫设置中添加。</string>
+    <string name="emergency_status_cooldown">已发送。一分钟后可用。</string>
+    <string name="emergency_status_ready">长按按钮 3 秒可通知您的联系人。</string>
+    <string name="emergency_triggered_ok">已向 %1$d 位联系人发送紧急消息。</string>
+    <string name="emergency_triggered_no_location">已向 %1$d 位联系人发送紧急消息 — 无法获取位置。</string>
+    <string name="emergency_triggered_all_failed">紧急发送失败（%1$d）。请检查您的默认短信应用。</string>
+    <string name="emergency_setup_enable_title">启用紧急模式</string>
+    <string name="emergency_setup_enable_desc">开启后，专用屏幕上会出现一个紧急按钮。长按 3 秒可将包含您位置的短信发送给您的紧急联系人。</string>
+    <string name="emergency_setup_template_title">消息模板</string>
+    <string name="emergency_setup_template_need_help">我需要帮助</string>
+    <string name="emergency_setup_template_danger">危险</string>
+    <string name="emergency_setup_template_discreet">隐蔽</string>
+    <string name="emergency_setup_location_title">包含位置</string>
+    <string name="emergency_setup_location_desc">将添加一个 Google 地图网址到短信中。需要位置权限。如果关闭（或拒绝权限），短信将不带坐标发送。</string>
+    <string name="emergency_setup_location_permission_warning">未授予位置权限。紧急短信将不带坐标发送。请在 Android 设置中授予权限以解决此问题。</string>
+    <string name="emergency_setup_contacts_title">紧急联系人</string>
+    <string name="emergency_setup_contacts_empty">未配置联系人。</string>
+    <string name="emergency_setup_contacts_count">已配置 %1$d 位联系人。</string>
+    <string name="emergency_setup_contacts_cta">管理联系人</string>
+    <string name="action_edit">编辑</string>
+    <string name="snack_generic_error">发生错误。</string>
+    <string name="reaction_send_confirm_title">发送反应？</string>
+    <string name="reaction_send_confirm_body">将向您的收件人发送一条仅包含此表情符号的短信。计入普通短信（按套餐费率）。您可以在“设置”→“发送”中禁用此功能。</string>
+    <string name="reaction_send_confirm_never_ask">不再询问，直接发送</string>
+    <string name="reaction_send_confirm_fallback_recipient">此联系人</string>
+    <string name="attachment_image_label">图片</string>
+    <string name="attachment_video_label">视频</string>
+    <string name="attachment_file_label">文件</string>
+    <string name="bubble_sender_self">您</string>
+    <string name="attachment_remove_label">移除附件</string>
+
+    <string name="action_react">反应</string>
+    <string name="settings_auto_lock_delay">自动锁定延迟</string>
+    <string name="settings_auto_lock_delay_dialog_title">锁定应用后…</string>
+    <string name="auto_lock_immediate">立即</string>
+    <string name="auto_lock_15s">15秒</string>
+    <string name="auto_lock_1m">1分钟</string>
+    <string name="auto_lock_5m">5分钟</string>
+    <string name="auto_lock_next_launch">仅下次启动时</string>
+    <string name="settings_signature_none">未设置</string>
+    <string name="settings_signature_dialog_body">附加到您发送的每条短信后，在分隔线之后。保持简短：过长的签名可能会将消息拆分成多条短信，每条短信单独计费。</string>
+    <string name="settings_signature_placeholder">例如：Pat</string>
+    <string name="action_star">星标</string>
+    <string name="action_unstar">移除星标</string>
+    <string name="reaction_picker_other">其他表情符号</string>
+    <string name="reaction_picker_other_title">自定义表情符号</string>
+    <string name="reaction_picker_other_body">输入或粘贴表情符号</string>
+    <string name="reaction_picker_other_hint">😀</string>
+    <!-- v1.5.0 — multi-emoji picker validate button -->
+    <string name="reaction_picker_validate_empty">选择一个或多个表情符号</string>
+    <string name="reaction_picker_validate_count">发送反应 %1$s</string>
+    <!-- v1.6.0 — a11y reaction badge (TalkBack) -->
+    <string name="reaction_badge_content_description">反应 %1$s</string>
+    <string name="reaction_badge_remove_action">移除反应</string>
+    <!-- v1.6.1 — body of the system notification fired when someone reacts to our message -->
+    <string name="reaction_notif_body_with_preview">对：%2$s 进行了反应 %1$s</string>
+    <string name="reaction_notif_body_no_preview">对您的消息进行了反应 %1$s</string>
+    <!-- v1.6.1 — snackbar shown when PDF export fails (audit QUAL-07 i18n fix) -->
+    <string name="snack_pdf_export_failed">PDF导出失败</string>
+
+    <!-- v1.8.0 — confirmation dialogs + "Mark all as read" action in overflow menu -->
+    <string name="action_mark_all_read">全部标记为已读</string>
+    <string name="mark_all_read_confirm_body">所有当前未读徽章将被清除。之后，新收到的消息将正常显示徽章。</string>
+    <string name="settings_resync_confirm_title">从手机重新同步？</string>
+    <string name="settings_resync_confirm_body">重新导入系统短信/彩信提供商的消息。现有消息将保留（通过唯一ID去重）；如果已删除的消息仍存在于系统数据库中，可能会重新出现。继续？</string>
+    <string name="settings_reset_all_confirm_title">重置所有设置？</string>
+    <string name="settings_reset_all_confirm_body">您的所有偏好设置（主题、通知、发送等）将恢复为默认值。您的对话、消息和安全设置（锁定、保险箱 PIN、紧急代码）不受影响。</string>
+    <string name="settings_purge_blocked_confirm_title">清除已屏蔽的对话？</string>
+    <string name="settings_purge_blocked_confirm_body">删除所有参与者完全在屏蔽列表中的对话。这也会将它们从系统短信提供商中删除。此操作不可逆。</string>
+
+    <string name="settings_section_notifications">通知</string>
+    <string name="settings_notifications_enabled">启用通知</string>
+    <string name="settings_inline_reply">从通知回复</string>
+    <string name="settings_vibrate">振动</string>
+
+    <!-- v1.8.0 — bug 3 fix: exposes PreviewMode + NotificationStyle in the UI. -->
+    <string name="settings_notif_preview">锁屏预览</string>
+    <string name="settings_notif_preview_always">始终显示姓名和内容</string>
+    <string name="settings_notif_preview_unlocked">解锁后显示</string>
+    <string name="settings_notif_preview_unlocked_hint">发件人姓名和已编辑的正文显示在锁屏上；解锁后显示完整内容。</string>
+    <string name="settings_notif_preview_never">锁屏上从不显示</string>
+    <string name="settings_notif_preview_never_hint">播放声音，但锁屏上不显示任何内容 — 直到您解锁并打开应用才能完全看到。</string>
+    <string name="settings_notif_style">通知样式</string>
+    <string name="settings_notif_style_desc">来电通知如何打断您。</string>
+    <string name="settings_notif_style_heads_up">浮动通知（默认）</string>
+    <string name="settings_notif_style_heads_up_hint">横幅会伴随声音出现在当前屏幕上方，然后停靠在通知栏中。</string>
+    <string name="settings_notif_style_banner">仅横幅</string>
+    <string name="settings_notif_style_banner_hint">没有弹出窗口，没有声音。只有通知栏中的一个图标。</string>
+    <string name="settings_notif_style_silent">静默</string>
+    <string name="settings_notif_style_silent_hint">路由到低优先级频道。系统会屏蔽声音和浮动通知。</string>
+    <string name="settings_notif_open_system">打开系统通知设置</string>
+    <string name="settings_notif_open_system_desc">在操作系统级别检查或修复权限、频道和声音。</string>
+
+    <string name="settings_section_security">安全与隐私</string>
+    <string name="settings_flag_secure">在最近任务中隐藏预览</string>
+    <string name="settings_flag_secure_desc">隐藏系统任务切换器中的对话缩略图，并在应用打开时拦截截图/屏幕录制。</string>
+    <string name="settings_lock_vault_on_leave">离开时锁定保险箱</string>
+    <string name="settings_lock_vault_on_leave_desc">应用进入后台后立即自动锁定加密保险箱。返回时需要重新解锁。</string>
+    <string name="settings_panic_code">诱饵 PIN（紧急模式）</string>
+
+    <string name="settings_section_blocking">屏蔽</string>
+    <string name="settings_block_unknown">屏蔽未知号码</string>
+    <string name="settings_manage_blocked">管理屏蔽列表</string>
+
+    <string name="settings_section_backup">备份</string>
+    <string name="settings_backup_now">立即备份</string>
+    <string name="settings_restore">从文件恢复</string>
+
+    <string name="settings_section_advanced">高级</string>
+    <string name="settings_default_sms_app">默认短信应用</string>
+    <string name="settings_set_default">设为默认</string>
+    <string name="settings_is_default">SMS Tech 是默认短信应用。</string>
+    <string name="settings_app_log">应用日志</string>
+    <string name="settings_reset_all">重置所有设置</string>
+    <string name="settings_nuke_data">删除我所有的数据</string>
+    <string name="settings_nuke_confirm">所有对话和设置将被清除。此操作不可撤销。</string>
+
+    <!-- About -->
+    <string name="about_title">关于</string>
+    <string name="about_tagline_short">适用于 Android 的现代、私密的短信和彩信。</string>
+    <!-- v1.25.3 (audit C7) — section titles were hardcoded in French in AboutScreen.kt. -->
+    <string name="about_section_privacy">隐私</string>
+    <string name="about_section_features">功能</string>
+    <string name="about_section_author">作者</string>
+    <string name="about_section_help">快速帮助</string>
+    <string name="about_section_links">链接</string>
+    <string name="about_check_updates">查看更新</string>
+    <string name="about_privacy_headline">100% 私密 — 零追踪</string>
+    <string name="about_author_role">开发者</string>
+    <!-- v1.25.3 (audit H20) — permission rationales were hardcoded in English. The permission
+         names themselves stay untranslated: they are the Android identifiers, verbatim. -->
+    <string name="about_perm_sms">任何短信应用都需要。</string>
+    <string name="about_perm_mms">接收彩信。</string>
+    <string name="about_perm_contacts">显示联系人姓名而不是纯号码。</string>
+    <string name="about_perm_phone_state">多 SIM 卡支持（从正确的 SIM 卡发送）。</string>
+    <string name="about_perm_notifications">显示新消息通知。</string>
+    <string name="about_perm_biometric">可选的生物识别解锁。</string>
+    <string name="about_perm_internet">通过您的运营商 MMSC 进行彩信传输。无分析。</string>
+    <string name="about_perm_record_audio">录制附加到传出彩信的语音消息。</string>
+    <string name="about_perm_foreground_service">长时间迁移/备份。</string>
+    <string name="about_permissions_title">我们使用的权限</string>
+    <string name="about_security_title">安全与限制</string>
+    <string name="about_security_body">短信和彩信在运营商网络中以未加密的方式传输 — 这是协议限制，并非故意为之。SMS Tech 仅保护设备上存储的内容。如需端到端加密消息，请使用 Signal 或 Matrix。</string>
+    <string name="about_credits_body">由%1$s创建。UI设计遵循 Material 3 动效原则。使用 Kotlin、Compose、Hilt、Room 和 SQLCipher 构建。</string>
+    <string name="about_legal_body">© %1$s %2$s。根据 Apache License 2.0 发布。</string>
+    <string name="about_source_code">源代码</string>
+    <string name="about_report_issue">报告问题</string>
+    <string name="about_website">网站</string>
+    <string name="about_license">许可证</string>
+    <string name="about_privacy">隐私政策</string>
+
+    <!-- Notification channels -->
+    <string name="channel_incoming_label">收到的消息</string>
+    <string name="channel_incoming_desc">您收到的短信和彩信的通知。</string>
+    <!-- v1.8.0 — silent channel for NotificationStyle.SILENT -->
+    <string name="channel_incoming_silent_label">收到的消息（静音）</string>
+    <string name="channel_incoming_silent_desc">当短信助手设置为“静音”模式时的通知。无弹窗，无声音。</string>
+    <string name="channel_sent_label">已发送的消息</string>
+    <string name="channel_sent_desc">您已发送消息的状态。</string>
+    <string name="channel_failed_label">失败的消息</string>
+    <string name="channel_failed_desc">错误和重试建议。</string>
+    <string name="channel_keep_alive_label">弹性模式</string>
+    <string name="channel_keep_alive_desc">在制造商会关闭后台应用的手机上保持短信助手运行。</string>
+    <string name="channel_safety_call_warning_label">安全通话警告</string>
+    <string name="channel_safety_call_warning_desc">自动发送短信给紧急联系人前的提醒。</string>
+    <string name="channel_safety_call_receipt_label">安全通话警报已完成</string>
+    <string name="channel_safety_call_receipt_desc">已发送警报的静默记录。无声音。</string>
+
+    <!-- Notification actions -->
+    <string name="notif_reply_label">回复</string>
+    <string name="notif_mark_read_label">标记为已读</string>
+    <string name="notif_preview_hidden_content">新消息</string>
+
+    <!-- PDF export -->
+    <string name="pdf_header_subtitle">已导出 %1$s • %2$d 位参与者</string>
+    <string name="pdf_footer">第 %1$d 页 — 短信助手</string>
+
+    <!-- Errors -->
+    <string name="error_not_default_app">短信助手尚未设置为默认短信应用。</string>
+    <string name="error_send_failed">消息发送失败。</string>
+
+    <!-- v1.14.8 ARCH-M2 — thread snackbars (i18n) — extracted from hardcoded VM strings. -->
+    <string name="snack_thread_max_duration">达到限制：%1$d 秒</string>
+    <string name="snack_thread_attach_sent">附件已发送</string>
+    <string name="snack_thread_attach_copy_failed">无法读取附件</string>
+    <string name="snack_thread_attach_cap_reached">彩信限制已达（280 KB）。请移除附件或缩短文本。</string>
+    <string name="snack_thread_voice_sent">语音消息已发送</string>
+    <string name="snack_thread_numbers_blocked">已拦截的号码</string>
+    <!-- v1.25.3 (audit M21) — the trash icon used to unblock instantly on a single tap. -->
+    <string name="blocked_unblock_confirm_title">解除拦截此号码？</string>
+    <string name="blocked_unblock_confirm_body">%1$s 将能够再次给您发短信。您可以随时再次拦截它。</string>
+    <!-- v1.25.3 (audit H15/H16) — blocking used to report success even when it had failed. -->
+    <string name="snack_block_failed">拦截失败 — 该号码未被拦截。对话已保留。</string>
+    <!-- v1.25.3 (audit SEC3) — a partial block used to be reported as a full success, and the
+         conversation was deleted even though one participant could still reach the user. -->
+    <string name="snack_block_partial">仅 %1$d 个号码（共 %2$d 个）被成功拦截。对话已保留，以免丢失。</string>
+
+    <!-- v1.15.2 — Common a11y + UX strings for passphrase fields. -->
+    <string name="action_show_password">显示密码</string>
+    <string name="action_hide_password">隐藏密码</string>
+    <string name="backup_passphrase_min_length">最少 %1$d 个字符</string>
+
+    <!-- v1.15.2 — Backup restore (encrypted .smsbk). -->
+    <string name="backup_restore_explainer">选择一个 .smsbk 文件，然后输入其密码。与相同收件人的对话将与您当前的对话合并；现有消息将被保留（无重复）。</string>
+    <string name="backup_restore_pick_file">选择一个 .smsbk 文件</string>
+    <string name="backup_restore_passphrase_title">恢复密码</string>
+    <string name="backup_restore_passphrase_field">密码</string>
+    <string name="backup_restore_action">恢复</string>
+    <string name="backup_restore_in_progress">正在恢复…</string>
+    <string name="backup_restore_success">导入了 %1$d 个对话（%2$d 个新对话），%3$d 条消息（%4$d 条已存在）</string>
+    <string name="backup_restore_failed_wrong_pass">密码错误或文件损坏</string>
+    <string name="backup_restore_failed_format">不是有效的短信助手备份文件</string>
+    <string name="backup_restore_failed_storage">无法读取文件</string>
+
+    <!-- v1.15.1 — Scheduled messages screen + Thread schedule flow. -->
+    <string name="settings_section_scheduled">计划发送的消息</string>
+    <string name="scheduled_title">计划发送的消息</string>
+    <string name="scheduled_empty">无计划发送的消息</string>
+    <!-- v1.15.1 — Inline how-to shown alongside the empty state, so the user discovers
+         the entry point even before reading AboutScreen. -->
+    <string name="scheduled_empty_explainer">要计划发送短信：打开一个对话，输入您的消息，然后点击 ⋮ → “计划发送…” → 选择日期和时间。短信将在该时间自动发送，即使应用已关闭。</string>
+    <string name="scheduled_to">收件人：%1$s</string>
+    <string name="scheduled_when">计划于：%1$s</string>
+    <string name="scheduled_cancel_confirm_title">取消此计划发送的消息？</string>
+    <string name="scheduled_cancel_confirm_body">它将不会被发送。此操作无法撤销。</string>
+    <string name="scheduled_cancel_confirm_action">取消发送</string>
+    <!-- v1.25.3 (audit H6) — failed sends were dropped from the list entirely. -->
+    <string name="scheduled_section_pending">等待发送</string>
+    <string name="scheduled_section_failed">失败</string>
+    <string name="scheduled_failed_explainer">多次尝试后发送失败。重试，或从列表中移除。</string>
+    <string name="scheduled_failed_when">原定于：%1$s</string>
+    <string name="scheduled_delete_confirm_title">移除此消息？</string>
+    <string name="scheduled_delete_confirm_body">它将从列表中移除且不会被发送。此操作无法撤销。</string>
+    <string name="scheduled_retried">正在重试发送…</string>
+    <string name="settings_scheduled_messages">计划发送的消息</string>
+    <string name="settings_scheduled_messages_desc">查看和管理计划发送的短信</string>
+    <string name="thread_schedule_action">计划发送…</string>
+    <string name="thread_schedule_date_title">选择日期</string>
+    <string name="thread_schedule_time_title">选择时间</string>
+    <string name="thread_schedule_invalid_past">选择的日期已过时</string>
+    <string name="thread_schedule_empty_body">请在计划发送前输入消息</string>
+    <string name="thread_schedule_success">消息已计划</string>
+    <string name="thread_schedule_failed">消息计划失败</string>
+
+    <!-- v1.14.9 audit I18N-M3 — AboutScreen strings extracted from hardcoded FR to support EN locale. -->
+
+    <!-- Privacy badges (4) -->
+    <string name="about_badge_no_ads">无广告</string>
+    <string name="about_badge_no_tracker">无追踪器</string>
+    <string name="about_badge_no_collection">不收集数据</string>
+    <string name="about_badge_no_sharing">零分享</string>
+
+    <!-- Features (15) -->
+    <string name="about_feat_sms_label">短信与彩信</string>
+    <string name="about_feat_sms_desc">Android 8-15+ 的默认短信应用。完整历史记录导入，无重复。</string>
+    <string name="about_feat_voice_label">语音消息</string>
+    <string name="about_feat_voice_desc">通过彩信进行一键通话。为兼容所有法国运营商，限制为 60 秒/300 KB。</string>
+    <string name="about_feat_vault_label">加密保险库</string>
+    <string name="about_feat_vault_desc">敏感对话存储在 SQLCipher 保险库中，密钥由 Android Keystore 包装。</string>
+    <string name="about_feat_panic_label">紧急密码</string>
+    <string name="about_feat_panic_desc">第二个 PIN 码可将应用以隐秘模式打开 — 保险库不可见且无法访问。</string>
+    <string name="about_feat_emergency_label">紧急模式</string>
+    <string name="about_feat_emergency_desc">在“紧急”页面按住按钮 3 秒钟 → 向您的“安全通话”联系人发送带有可选 GPS 的警报短信，前缀为 ⚠️。快速访问 112 / 15 / 17 / 18 + 锁屏通知快捷方式。</string>
+    <string name="about_feat_biometric_label">生物识别</string>
+    <string name="about_feat_biometric_desc">指纹或面部解锁，强制要求备用 PIN 码。</string>
+    <string name="about_feat_reply_label">情境回复</string>
+    <string name="about_feat_reply_desc">作曲框上方的小卡片 + 对话中的引用回复气泡。</string>
+    <string name="about_feat_translate_label">委托翻译</string>
+    <string name="about_feat_translate_desc">长按 → “翻译”会通过系统 Intent 委托给您已安装的翻译应用（如 Google 翻译、DeepL、Aves Translate FLOSS 等）。不捆绑模型。</string>
+    <string name="about_feat_block_label">同步拦截</string>
+    <string name="about_feat_block_desc">自动导入手机/三星短信的拦截号码。追溯性清除。</string>
+    <string name="about_feat_search_label">全文搜索</string>
+    <string name="about_feat_search_desc">SQLite FTS4 全文搜索正文、数字和联系人姓名。</string>
+    <string name="about_feat_pdf_label">PDF 导出</string>
+    <string name="about_feat_pdf_desc">将对话导出为 PDF（日期、发件人、正文）以存档或作为证明。</string>
+    <string name="about_feat_backup_label">加密备份</string>
+    <string name="about_feat_backup_desc">本地 AES-256-GCM 备份，使用与 PIN 不同的密码。</string>
+    <string name="about_feat_themes_label">主题</string>
+    <string name="about_feat_themes_desc">浅色、深色、AMOLED、暗黑科技（石板蓝 + 蓝色点缀）。可自定义圆角。</string>
+    <string name="about_feat_ui_label">流畅的用户界面</string>
+    <string name="about_feat_ui_desc">消息撰写 + 每条气泡独立重组。在三点菜单中进行对话排序。</string>
+    <string name="about_feat_noads_label">零广告，零追踪器</string>
+    <string name="about_feat_noads_desc">无分析。仅网络连接：用于 MMS 传输的运营商 MMSC。</string>
+
+    <!-- Help recipes (7 titles + steps) -->
+    <string name="about_help_default_title">设置为默认短信应用</string>
+    <string name="about_help_default_step1">对话列表顶部的蓝色按钮“设置为默认”</string>
+    <string name="about_help_default_step2">或 Android 设置 → 默认应用 → 短信 → SMS Tech</string>
+    <string name="about_help_voice_title">发送语音消息</string>
+    <string name="about_help_voice_step1">长按撰写框右侧的麦克风图标</string>
+    <string name="about_help_voice_step2">说话，然后松开即可发送（向左滑动 = 取消）</string>
+    <string name="about_help_voice_step3">上限 60 秒 — 录制会在超过此时间后自动停止</string>
+    <string name="about_help_vault_title">将对话移至保险箱</string>
+    <string name="about_help_vault_step1">长按列表中的对话 → “保险箱”</string>
+    <string name="about_help_vault_step2">解锁：根据您的设置，使用 PIN、密码或生物识别技术</string>
+    <string name="about_help_vault_step3">设置 → 安全以配置保险箱</string>
+    <string name="about_help_block_title">拦截号码</string>
+    <string name="about_help_block_step1">在对话中：菜单 ⋮ → 拦截（= 拦截 + 删除对话）</string>
+    <string name="about_help_block_step2">长按列表中的对话 → 拦截（保留历史记录）</string>
+    <string name="about_help_block_step3">该号码将添加到系统拦截列表中，并与电话应用共享</string>
+    <string name="about_help_translate_title">翻译收到的消息</string>
+    <string name="about_help_translate_step1">长按气泡 → “翻译”</string>
+    <string name="about_help_translate_step2">将打开一个包含所有已安装翻译应用的选取器</string>
+    <string name="about_help_translate_step3">选择 Google Translate、DeepL、Aves Translate (FLOSS) 或其他应用</string>
+    <string name="about_help_translate_step4">如果未安装任何应用，则会显示一条消息邀请您安装一个</string>
+    <string name="about_help_emergency_title">使用紧急模式</string>
+    <string name="about_help_emergency_step1">设置 → 紧急模式：启用 + 添加至少一个安全呼叫联系人</string>
+    <string name="about_help_emergency_step2">紧急页面：直接呼叫 112 / 15 / 17 / 18；长按红色按钮 3 秒 → 发送短信给亲属</string>
+    <string name="about_help_emergency_step3">锁屏通知（可选）：无需解锁即可快捷呼叫 112 + 17</string>
+    <string name="about_help_emergency_step4">对话列表中的“我很好”可在意外触发时取消警报</string>
+    <string name="about_help_update_title">检查更新</string>
+    <string name="about_help_update_step1">此页面顶部的“查看更新”按钮</string>
+    <string name="about_help_update_step2">打开 SMS Tech GitHub Releases 页面</string>
+    <string name="about_help_update_step3">应用绝不会在未经您同意的情况下尝试自动更新</string>
+
+    <!-- v1.14.8 R1/R2 — incoming MMS failure notification (size cap or MMSC error). -->
+    <string name="mms_failure_notification_title">未收到 MMS</string>
+    <string name="mms_failure_notification_body_too_large">来自 %1$s 的消息过大（%2$d KB）。点击以打开 MMS 设置。</string>
+    <string name="mms_failure_notification_body_download_failed">无法从 %1$s 下载 MMS。请检查信号覆盖范围并重试。</string>
+    <string name="mms_failure_notification_body_unknown_sender">一个未知联系人</string>
+
+    <!-- v1.14.8 R3 — confirmation before retrying a watchdog-timed-out message (potential duplicate). -->
+    <string name="thread_retry_watchdog_title">重新发送此消息？</string>
+    <string name="thread_retry_watchdog_body">之前的尝试可能已到达收件人。重新发送可能会产生重复。</string>
+    <string name="thread_retry_watchdog_confirm">仍要重发</string>
+    <string name="thread_retry_watchdog_cancel">取消</string>
+
+    <!-- v1.14.8 R4 — floating chip shown when new messages arrive while scrolled up. -->
+    <plurals name="thread_unseen_messages">
+        <item quantity="one">↓ %d 条新消息</item>
+        <item quantity="other">↓ %d 条新消息</item>
+    </plurals>
+
+    <!-- v1.13.0 — plurals for multi-selection counts -->
+    <plurals name="conversations_selection_count">
+        <item quantity="one">已选择 %d 项</item>
+        <item quantity="other">已选择 %d 项</item>
+    </plurals>
+    <plurals name="vault_bulk_move_in_done">
+        <item quantity="one">已将 %d 条对话移至保险箱</item>
+        <item quantity="other">已将 %d 条对话移至保险箱</item>
+    </plurals>
+    <plurals name="vault_bulk_move_out_done">
+        <item quantity="one">已将 %d 条对话移出保险箱</item>
+        <item quantity="other">已将 %d 条对话移出保险箱</item>
+    </plurals>
+    <!-- v1.24.0 sliding window: head-of-thread control to widen the loaded window -->
+    <string name="thread_load_older">加载较旧的消息</string>
+    <string name="thread_load_older_remaining">加载较旧的消息（%1$d）</string>
+    <!-- v1.24.0 : ecran de recuperation quand la base ne peut pas etre ouverte -->
+    <string name="db_recovery_title">SMS Tech 无法打开其数据库</string>
+    <string name="db_recovery_body">您的消息仍然在此设备上 — Android 会保留自己的副本，SMS Tech 尚未删除任何内容。目前只有 SMS Tech 自有的加密数据库无法读取。</string>
+    <string name="db_recovery_hint">这通常发生在更改屏幕锁定或恢复设备后，这会使保护数据库的密钥失效。重启手机值得先尝试一下。如果此屏幕持续出现，重新安装 SMS Tech 将会从 Android 已保存的消息中重建其数据库。</string>
+    <string name="action_add">添加</string>
+    <string name="action_discard">放弃</string>
+    <string name="safety_call_saved_enabled">安全呼叫已启用</string>
+    <string name="safety_call_saved_disabled">安全呼叫已禁用</string>
+    <string name="safety_call_contact_added">联系人已添加</string>
+    <string name="safety_call_contact_removed">联系人已移除</string>
+    <string name="safety_call_setup_state_label">状态:</string>
+    <string name="safety_call_setup_state_on">启用</string>
+    <string name="safety_call_setup_state_off">禁用</string>
+    <string name="safety_call_setup_state_unsaved">Unsaved changes — tap Save to apply them.</string>
+    <string name="safety_call_setup_disabled_now">Safety call disabled immediately.</string>
+    <string name="safety_call_setup_unsaved_title">未保存的更改</string>
+    <string name="safety_call_setup_unsaved_body">Adding a contact is not enough: it must be saved to be kept. Leaving now would lose it.</string>
+    <string name="emergency_location_grant">Allow location</string>
+    <string name="settings_panic_code_desc">A second code that opens the app in decoy mode: vault and emergency mode hidden.</string>
+    <string name="settings_panic_code_set">Configured. Tap to remove it.</string>
+    <string name="settings_panic_code_clear_title">Remove the panic code?</string>
+    <string name="settings_panic_code_clear_body">Decoy mode will no longer be reachable. Your main PIN and your data are unchanged.</string>
+    <string name="settings_panic_code_clear_action">Remove</string>
+    <string name="settings_panic_code_saved">Panic code saved</string>
+    <string name="settings_panic_code_removed">Panic code removed</string>
+    <string name="settings_panic_code_same_as_pin">This code is the same as your main PIN. Choose another one, otherwise the app would always open in decoy mode.</string>
+    <string name="settings_panic_code_no_pin">Set up an app lock first.</string>
+    <string name="settings_pin_same_as_panic_code">This PIN is the same as your panic code. Choose another one, otherwise the app would always open in decoy mode and you could no longer reach your own session.</string>
+    <string name="lock_wrong_code">Incorrect code</string>
+</resources>

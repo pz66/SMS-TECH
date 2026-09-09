@@ -80,7 +80,7 @@ android {
 
     // AGP 8.13+: locale filters replace the deprecated `resourceConfigurations`.
     androidResources {
-        localeFilters += listOf("en", "fr")
+        localeFilters += listOf("en", "fr", "zh-rCN")
     }
 
     // v1.24.0 — `MigrationTestHelper` lit les schémas Room depuis les ASSETS de l'APK de test.
