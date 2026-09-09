@@ -50,6 +50,12 @@ class IncomingMessageNotifier @Inject constructor(
         messageId: Long,
         conversationId: Long,
     ) = withContext(io) {
+        val code = VerifyCodeHelper.extractVerificationCode(body)
+        val  isVerifyCodeMsg = !code.isNullOrBlank()
+        if (isVerifyCodeMsg) {
+            //toast
+            VerifyCodeHelper.copyToClipboardAndToast(context=context, code)
+        }
         // v1.11.0 — Vault gate. Si la conversation est dans le coffre, on
         // n'affiche AUCUNE notification — ni nom, ni preview, ni heads-up,
         // ni icône silencieuse. Cohérent avec la promesse Vault "les conv
@@ -199,13 +205,14 @@ class IncomingMessageNotifier @Inject constructor(
                 // ignorent `VISIBILITY_SECRET` pour MessagingStyle. Désormais le body
                 // sensible n'est exposé QUE quand l'utilisateur a explicitement choisi
                 // PreviewMode.ALWAYS.
-                NotificationCompat.MessagingStyle(person).addMessage(
-                    NotificationCompat.MessagingStyle.Message(
-                        visiblePreview,
-                        System.currentTimeMillis(),
-                        person,
-                    ),
-                ),
+                NotificationCompat.BigTextStyle().bigText (visiblePreview)
+//                NotificationCompat.MessagingStyle(person).addMessage(
+//                    NotificationCompat.MessagingStyle.Message(
+//                        visiblePreview,
+//                        System.currentTimeMillis(),
+//                        person,
+//                    ),
+//                ),
             )
             .setVisibility(
                 when (notifSettings.previewMode) {
